@@ -15,12 +15,6 @@
 
 
      };
-//    function onSuccess(contacts) {
-//        alert('Found ' + contacts.length + ' contacts.');
-//    }
-//
-//    function onError() {
-//        alert('onError!');
-//    }
+
      this.Pgap=Pgap;
 }).call(this);

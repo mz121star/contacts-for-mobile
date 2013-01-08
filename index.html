@@ -82,11 +82,11 @@
 <script type="text/javascript">
     console.log("Application running!!!");
     var _l=new logger("logmsg");
-
+     console.log("Application running!");
      _l.log("Application running!");
     $(document).ready(function () {
         Pgap.onLoad(function () {
-
+            _l.log("PageOnLoad!");
             var contacts = new Pgap.contacts();
             contacts.find("孙", function (contacts) {
                 console.log("length:" + contacts.length);
