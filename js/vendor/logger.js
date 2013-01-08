@@ -1,5 +1,6 @@
 (function(window){
 
+
     var  logger=function(eleId){
        this.eleId=eleId;
        this.messageLog;
