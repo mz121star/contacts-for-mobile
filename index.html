@@ -20,6 +20,7 @@
     <script src="js/custom-scripting.js"></script>
     <script src="js/jquery.mobile-1.2.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/phonegap/cordova-2.3.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/phonegap/application.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/phonegap/contact.js"></script>
 </head>
 <body>
@@ -27,14 +28,15 @@
 
     <div data-role="header" data-theme="b">
         <h1>我的联系人</h1>
-        <a href="#popupPanel" data-rel="popup" data-transition="slide" data-position-to="window" data-role="button">Menu</a>
+        <a href="#popupPanel" data-rel="popup" data-transition="slide" data-position-to="window"
+           data-role="button">Menu</a>
     </div>
     <!-- /header -->
 
     <div data-theme="b" data-role="content" data-title="联系人">
         <p>查找联系人</p>
         <ul data-role="listview" data-theme="b" data-inset="true" data-filter="true">
-            <li><a href="#details" >Acura</a></li>
+            <li><a href="#details">Acura</a></li>
             <li><a href="#details">Audi</a></li>
             <li><a href="#details">BMW</a></li>
             <li><a href="#details">Cadillac</a></li>
@@ -45,7 +47,8 @@
     <!-- /content -->
 
 
-    <div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">
+    <div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false"
+         data-tolerance="0,0">
         <button data-theme="a" data-icon="back" data-mini="true">Back</button>
         <button data-theme="a" data-icon="grid" data-mini="true">Menu</button>
         <button data-theme="a" data-icon="search" data-mini="true">Search</button>
@@ -74,23 +77,29 @@
 <!-- /page -->
 
 
-
-
 </body>
 <script type="text/javascript">
-     var contacts=new Pgap.contacts();
-     contacts.find("孙",function(contacts){
-         console.log("length:"+contacts.length);
-          contacts.each(function(index,element){
-             console.log( contacts[index].displayName);
-          })
-     },function(){
+    console.log("Application running!");
 
-     })
-    $( "#popupPanel" ).on({
-        popupbeforeposition: function() {
+    $(document).ready(function () {
+        Pgap.onLoad(function () {
+
+            var contacts = new Pgap.contacts();
+            contacts.find("孙", function (contacts) {
+                console.log("length:" + contacts.length);
+                contacts.each(function (index, element) {
+                    console.log(contacts[index].displayName);
+                })
+            }, function () {
+            })
+
+        });
+    });
+
+    $("#popupPanel").on({
+        popupbeforeposition:function () {
             var h = $(window).height();
-            $( "#popupPanel" ).css( "height", h );
+            $("#popupPanel").css("height", h);
         }
     });
 </script>
