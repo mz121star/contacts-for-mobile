@@ -22,6 +22,7 @@
     <script type="text/javascript" charset="utf-8" src="js/phonegap/cordova-2.3.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/phonegap/application.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/phonegap/contact.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/vendor/logger.js"></script>
 </head>
 <body>
 <div data-role="page" data-theme="b" id="contacts">
@@ -76,11 +77,13 @@
 </div>
 <!-- /page -->
 
-
+<div id="logmsg"></div>
 </body>
 <script type="text/javascript">
-    console.log("Application running!");
+    console.log("Application running!!!");
+     var _l=new logger("logmsg");
 
+     _l.log("Application running!");
     $(document).ready(function () {
         Pgap.onLoad(function () {
 
