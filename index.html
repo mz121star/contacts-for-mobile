@@ -36,7 +36,7 @@
 
     <div data-theme="b" data-role="content" data-title="联系人">
         <p>查找联系人</p>
-        <ul data-role="listview" data-theme="b" data-inset="true" data-filter="true">
+        <ul data-role="listview" data-theme="b" data-inset="true" id="result" data-filter="true">
             <li><a href="#details">Acura</a></li>
             <li><a href="#details">Audi</a></li>
             <li><a href="#details">BMW</a></li>
@@ -52,6 +52,7 @@
          data-tolerance="0,0">
         <button data-theme="a" data-icon="back" data-mini="true">Back</button>
         <button data-theme="a" data-icon="grid" data-mini="true">Menu</button>
+        <input data-theme="a" type="search" name="search" id="search-basic" value="" data-mini="true"/>
         <button data-theme="a" data-icon="search" data-mini="true">Search</button>
     </div>
 </div>
@@ -80,25 +81,29 @@
 <div id="logmsg"></div>
 </body>
 <script type="text/javascript">
-    console.log("Application running!!!");
-    var _l=new logger("logmsg");
-     console.log("Application running!");
-     _l.log("Application running!");
+
+    var logger = new logger("logmsg");
+    var contacts;
+
     $(document).ready(function () {
         Pgap.onLoad(function () {
-            _l.log("PageOnLoad!");
-            var contacts = new Pgap.contacts();
-            contacts.find("张", function (contacts) {
-                _l.log("length:" + contacts.length);
-                for (var i=0; i<contacts.length; i++) {
-                    _l.log("Display Name = " + contacts[i].displayName);
-                }
-
-            }, function () {
-            })
-
+            contacts = new Pgap.contacts();
+            search("孙");
         });
     });
+    function search(name) {
+        contacts.find(name,onSearchSuccess,null);
+
+    }
+    function onSearchSuccess(contacts) {
+        _l.log("length:" + contacts.length);
+        var str="";
+        for (var i = 0; i < contacts.length; i++) {
+            _l.log("Display Name = " + contacts[i].displayName);
+            str= str+ " <li><a href='#details'>"+contacts[i].displayName+"</a></li>";
+             $("#result").html(str);
+        }
+    }
 
     $("#popupPanel").on({
         popupbeforeposition:function () {
