@@ -10,7 +10,7 @@
         var options = new ContactFindOptions();
         options.filter = name;
         var fields = ["displayName", "name"];
-        navigator.service.contacts.find(fields, onSuccess, onError, options);
+        navigator.contacts.find(fields, onSuccess, onError, options);
     }
 //    function onSuccess(contacts) {
 //        alert('Found ' + contacts.length + ' contacts.');
