@@ -80,6 +80,7 @@
 <script type="text/javascript">
      var contacts=new Pgap.contacts();
      contacts.find("孙",function(contacts){
+         console.log("length:"+contacts.length);
           contacts.each(function(index,element){
              console.log( contacts[index].displayName);
           })
