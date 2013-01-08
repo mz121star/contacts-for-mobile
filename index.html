@@ -88,10 +88,10 @@
         Pgap.onLoad(function () {
             _l.log("PageOnLoad!");
             var contacts = new Pgap.contacts();
-            contacts.find("孙", function (contacts) {
-                console.log("length:" + contacts.length);
+            contacts.find("张", function (contacts) {
+                _l.log("length:" + contacts.length);
                 contacts.each(function (index, element) {
-                    console.log(contacts[index].displayName);
+                    _l.log(contacts[index].displayName);
                 })
             }, function () {
             })
