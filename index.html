@@ -90,9 +90,10 @@
             var contacts = new Pgap.contacts();
             contacts.find("张", function (contacts) {
                 _l.log("length:" + contacts.length);
-                contacts.each(function (index, element) {
-                    _l.log(contacts[index].displayName);
-                })
+                for (var i=0; i<contacts.length; i++) {
+                    _l.log("Display Name = " + contacts[i].displayName);
+                }
+
             }, function () {
             })
 
