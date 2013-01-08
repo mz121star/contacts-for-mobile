@@ -1,5 +1,5 @@
-(function (window,Pgap) {
-    Pgap = Pgap || {};
+(function () {
+    Pgap = this.Pgap || {};
 
     Pgap.contacts = function () {
     }
@@ -19,5 +19,5 @@
 //    function onError() {
 //        alert('onError!');
 //    }
-     window.Pgap=Pgap;
-})(window,Pgap);
+     this.Pgap=Pgap;
+}).call(this);
