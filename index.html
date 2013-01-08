@@ -89,17 +89,20 @@
         Pgap.onLoad(function () {
             contacts = new Pgap.contacts();
             search("孙");
+            $("#search-basic").on("change",function(){
+                search($(this).val());
+                logger.log("search:"+$(this).val());
+            })
         });
     });
     function search(name) {
         contacts.find(name,onSearchSuccess,null);
-
     }
     function onSearchSuccess(contacts) {
-        _l.log("length:" + contacts.length);
+        logger.log("length:" + contacts.length);
         var str="";
         for (var i = 0; i < contacts.length; i++) {
-            _l.log("Display Name = " + contacts[i].displayName);
+            logger.log("Display Name = " + contacts[i].displayName);
             str= str+ " <li><a href='#details'>"+contacts[i].displayName+"</a></li>";
              $("#result").html(str);
         }
